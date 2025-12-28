@@ -1,0 +1,51 @@
+# Gas Station System Walkthrough
+
+## Overview
+The Gas Station Management System has been fully implemented with a modern interface featuring both Light and Dark themes, Ukrainian localization, and dynamic fuel type customization.
+
+## Features Implemented
+
+### 1. User Interface (UI/UX)
+- **Theme Switcher**: Users can toggle between **Light (Soft)** and **Dark (Neon)** modes via the navbar icon.
+- **Dynamic Colors**: Fuel types retain branding colors across themes.
+- **Interactive Map**: A new `/map/` page showing station locations with real-time prices.
+- **Bonus Shop**: A new `/shop/` page to retrieve rewards.
+- **Promotions**: A vibrant `/promotions/` page showcasing current offers.
+- **Clean UI**: Simplified pump selection by removing redundant price indicators.
+- **Favicon**: Branded gas station icon in the browser tab.
+
+### 2. Backward Logic & Accounts
+- **Authentication**: Registration and Login pages.
+- **Profiles**: Personal cabinet showing Bonus Balance and Transaction History.
+- **History**: Detailed table with zebra-striping, custom date format (DD.MM.YYYY HH:MM), and styled badges.
+- **PDF Receipts**: Users can download a PDF receipt for each transaction.
+- **Loyalty System**:
+    - **Bonuses**: 1 Liter = 1 Bonus Point.
+    - **Coupons**: Transactions >20L trigger a "Free Coffee" reward.
+    - **Redemption**: Users can buy Coffee (30) or Hot Dogs (50) in the Shop.
+
+### 3. Backend Logic
+- **Models**:
+    - [Fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#4-16): Includes `color_code`.
+    - [Pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#17-33) & [Transaction](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#34-49): Business logic.
+    - [Profile](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#50-60): Stores user bonus balance, auto-created via signals or `get_or_create`.
+- **Map**: Uses Leaflet.js with Dark Matter tiles.
+- **PDF Generation**: Uses `reportlab` to generate receipts on the fly. Graceful fallback if library is missing.
+
+## How to Run
+1.  **Ensure Virtual Environment is Active**:
+    ```bash
+    .\venv\Scripts\activate
+    ```
+2.  **Run Server**:
+    ```bash
+    python manage.py runserver
+    ```
+3.  **Access Site**: Open `http://127.0.0.1:8000`
+
+## Verification Steps
+1.  **Profile History**: Make a few transactions. Go to Profile. Check the "Історія транзакцій" table.
+    - Verify date format (e.g., 26.12.2025 14:00).
+    - Verify empty state message if no transactions.
+2.  **PDF Receipt**: Click the "Чек" button. Verify a PDF downloads with correct details.
+3.  **Favicon**: Verify the page tab icon matches the site logo.

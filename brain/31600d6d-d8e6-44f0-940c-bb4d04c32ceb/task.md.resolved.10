@@ -1,0 +1,19 @@
+# Gas Station Management System - Task List
+
+- [x] Project Initialization
+- [x] Database Modeling
+- [x] Core Features Implementation
+- [x] UI/UX Implementation
+- [x] Fixes & New Features
+    - [x] Fix Bonus Accrual Logic
+    - [x] Fix Map Rendering
+    - [x] Implement Bonus Shop
+- [x] UI Optimization & Content
+    - [x] Remove price from Pump cards
+    - [x] Create Promotions Page
+    - [x] Update Navbar Links
+- [ ] Profile & Branding
+    - [ ] Fetch User Transactions in View
+    - [ ] Display History in Profile Template
+    - [ ] Add Favicon
+- [x] Verification

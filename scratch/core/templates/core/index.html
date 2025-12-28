@@ -1,0 +1,225 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    {
+        % for fuel in fuels %
+    }
+
+    .btn-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+        {
+        background: {
+                {
+                fuel.color_code
+            }
+        }
+
+        ;
+
+        background: linear-gradient(135deg, {
+                {
+                fuel.color_code
+            }
+        }
+
+        , #495057);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+    }
+
+    [data-bs-theme="light"] .btn-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+        {
+        background: linear-gradient(135deg, {
+                {
+                fuel.color_code
+            }
+        }
+
+        , #adb5bd);
+    color: #fff;
+    }
+
+    .btn-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+    :hover {
+        filter: brightness(1.1);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    [data-bs-theme="light"] .btn-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+    :hover {
+        filter: brightness(0.95);
+        color: white !important;
+
+        box-shadow: 0 5px 15px {
+                {
+                fuel.color_code
+            }
+        }
+
+        66;
+    }
+
+    .border-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+        {
+        border-top: 4px solid {
+                {
+                fuel.color_code
+            }
+        }
+
+        !important;
+    }
+
+    .text-fuel- {
+            {
+            fuel.id
+        }
+    }
+
+        {
+        color: {
+                {
+                fuel.color_code
+            }
+        }
+
+        !important;
+    }
+
+        {
+        % endfor %
+    }
+</style>
+
+<div class="row mb-5 pt-4">
+    <div class="col-12 text-center mb-5">
+        <img src="/static/images/logo.png" alt="Logo" style="height: 100px; opacity: 0.8;" class="mb-3">
+        <h1 class="display-4 fw-bold">Ласкаво просимо на АЗС</h1>
+        <p class="lead text-muted">Сучасна та надійна заправка</p>
+    </div>
+</div>
+
+<div class="row mb-5 g-4">
+    <div class="col-12">
+        <h3 class="mb-3"><i class="fas fa-tags text-warning"></i> Ціни на пальне</h3>
+    </div>
+    {% for fuel in fuels %}
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 border-fuel-{{ fuel.id }}">
+            <div class="card-body text-center d-flex flex-column justify-content-center">
+                <div class="mb-3">
+                    <i class="fas fa-tint fa-3x text-fuel-{{ fuel.id }}"></i>
+                </div>
+                <h4 class="card-title fw-bold">{{ fuel.name }}</h4>
+                <div class="display-6 fw-bold my-2">
+                    {{ fuel.price }} <span class="fs-6 text-muted">грн/л</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h3 class="mb-4"><i class="fas fa-charging-station text-warning"></i> Доступні колонки</h3>
+    </div>
+    {% for pump in pumps %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-fuel-{{ pump.fuel.id }}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="card-title mb-0">{{ pump.name }}</h5>
+                    {% if pump.status == 'AVAILABLE' %}
+                    <span class="badge bg-success rounded-pill">Вільна</span>
+                    {% elif pump.status == 'BUSY' %}
+                    <span class="badge bg-warning text-dark rounded-pill">Зайнята</span>
+                    {% else %}
+                    <span class="badge bg-danger rounded-pill">Не працює</span>
+                    {% endif %}
+                </div>
+
+                <div class="my-3">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-gas-pump fa-2x me-3 text-fuel-{{ pump.fuel.id }}"></i>
+                        <div>
+                            <div class="small text-muted">Тип пального</div>
+                            <div class="fw-bold fs-5">{{ pump.fuel.name }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if pump.status == 'AVAILABLE' %}
+                <button type="button" class="btn btn-fuel-{{ pump.fuel.id }} w-100 py-2 mt-2 shadow-sm"
+                    data-bs-toggle="modal" data-bs-target="#fuelModal{{ pump.id }}">
+                    <i class="fas fa-fill-drip me-2"></i> Заправити
+                </button>
+                {% else %}
+                <button class="btn btn-secondary w-100 py-2 mt-2" disabled>Недоступна</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fuelModal{{ pump.id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-fuel-{{ pump.fuel.id }}">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заправка на {{ pump.name }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 fw-bold text-fuel-{{ pump.fuel.id }}">{{ pump.fuel.name }}</h1>
+                        <p class="lead text-muted">{{ pump.fuel.price }} грн/л</p>
+                    </div>
+
+                    <form action="{% url 'fuel_pump' pump.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="liters{{ pump.id }}" class="form-label">Кількість літрів</label>
+                            <div class="input-group input-group-lg">
+                                <input type="number" class="form-control" id="liters{{ pump.id }}" name="liters"
+                                    step="0.01" min="0.1" placeholder="0.00" required>
+                                <span class="input-group-text">л</span>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit"
+                                class="btn btn-fuel-{{ pump.fuel.id }} btn-lg shadow-sm">Оплатити</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+# Gas Station System Walkthrough
+
+## Overview
+The Gas Station Management System has been fully implemented with a modern interface featuring both Light and Dark themes, Ukrainian localization, and dynamic fuel type customization.
+
+## Features Implemented
+
+### 1. User Interface (UI/UX)
+- **Theme Switcher**: Users can toggle between **Light (Soft)** and **Dark (Neon)** modes via the navbar icon.
+    - **Light Mode**: Uses soft grays (`#f8f9fa`) and subtle shadows for a pleasant, airy feel.
+    - **Dark Mode**: High-contrast dark tones (`#121212`) for night usage.
+- **Dynamic Colors**: Fuel types (100, Diesel, 95, Gas) retain their branding colors (Green, Yellow, Red, Turquoise) across both themes, adapting gradients for visibility.
+- **Responsive Design**: Full mobile support with Bootstrap 5.
+
+### 2. Backend Logic
+- **Models**:
+    - [Fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#4-16): Includes `color_code` for dynamic styling.
+    - [Pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#17-33) & [Transaction](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#34-49): Full business logic including stock management.
+- **Admin Panel**:
+    - Customized "Control Panel" branding.
+    - Full transaction logging and inventory management.
+
+### 3. Data & Localization
+- **Language**: Ukrainian (`uk`) by default.
+- **Seed Data**: Fully seeded with correct prices and types.
+
+## How to Run
+1.  **Ensure Virtual Environment is Active**:
+    ```bash
+    .\venv\Scripts\activate
+    ```
+2.  **Run Server**:
+    ```bash
+    python manage.py runserver
+    ```
+3.  **Access Site**: Open `http://127.0.0.1:8000`
+
+## Verification Steps
+1.  **Theme Toggle**: Click the Moon/Sun icon in the navbar. Verify the page transitions smoothly between light and dark backgrounds.
+2.  **Fueling**: verify the "Заправити" flow works in both themes.
+3.  **Visuals**: Check that text is readable and shadows are soft in Light mode.

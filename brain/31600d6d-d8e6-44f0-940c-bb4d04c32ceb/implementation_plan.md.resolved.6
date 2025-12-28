@@ -1,0 +1,23 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Optimize UI by removing redundant price info and implementing a "Promotions" page with specific marketing offers.
+
+## User Review Required
+- **Promotions Content**: Night Drive (2x bonuses), Full Tank (Free Coffee >40L), Weekend Bonus (-20% Shop).
+- **UI Change**: Removed price from Pump cards.
+
+## Proposed Changes
+
+### UI Cleanup
+- **[index.html](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/templates/core/index.html)**: Remove price badge from Pump cards.
+
+### New Feature: Promotions
+- **View**: `promotions_view` (static content).
+- **Template**: `promotions.html` with vibrant gradients.
+- **Navigation**: Update "Акції" link in [base.html](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/templates/core/base.html).
+
+## Verification Plan
+### Manual Verification
+1. **Home Page**: Verify pumps don't show price rows.
+2. **Promotions**: Click "Акції" in navbar. Check 3 cards are present with correct text.

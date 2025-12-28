@@ -1,0 +1,49 @@
+# Gas Station System Walkthrough
+
+## Overview
+The Gas Station Management System has been fully implemented with a modern Dark Theme UI, Ukrainian localization, and dynamic fuel type customization.
+
+## Features Implemented
+
+### 1. User Interface (UI/UX)
+- **Dark Theme**: Using `#121212` background and dark card components.
+- **Dynamic Colors**: Each fuel type has a specific accent color (Green for 100, Yellow for Diesel, etc.) that updates borders, icons, and buttons.
+- **Responsive Design**: Bootstrap 5 Grid system ensures compatibility with mobile and desktop.
+- **Visuals**:
+    - Gradient buttons matching fuel colors.
+    - Large, legible price displays.
+    - Icons for decorative purposes.
+
+### 2. Backend Logic
+- **Models**:
+    - [Fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#4-16): Added `color_code` field for dynamic styling from Admin.
+    - [Pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#17-33) & [Transaction](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#34-49): Full relational logic implemented.
+- **Admin Panel**:
+    - Customized header "Панель керування заправкою".
+    - Ability to change fuel prices and colors on the fly.
+    - Transaction logging.
+
+### 3. Data & Localization
+- **Language**: Default set to Ukrainian (`uk`).
+- **Seed Data**:
+    - 100 (Green): 71.99 грн
+    - Diesel (Yellow): 64.99 грн
+    - 95 (Red): 64.99 грн
+    - Gas (Turquoise): 38.99 грн
+
+## How to Run
+1.  **Ensure Virtual Environment is Active**:
+    ```bash
+    .\venv\Scripts\activate
+    ```
+2.  **Run Server**:
+    ```bash
+    python manage.py runserver
+    ```
+3.  **Access Site**: Open `http://127.0.0.1:8000`
+
+## Verification Steps
+1.  **Main Page**: Check if all 4 fuel types are visible with correct colors and prices.
+2.  **Fueling**: Click "Заправити" on a pump (e.g., Pump #1). Enter liters and submit.
+3.  **Transaction**: Verify the success message and that stock has decreased (visible in Admin).
+4.  **Admin**: Go to `/admin` to edit prices or colors.

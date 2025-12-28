@@ -1,0 +1,23 @@
+# Gas Station Management System - Task List
+
+- [x] Project Initialization
+- [x] Database Modeling
+- [x] Core Features Implementation
+- [x] UI/UX Implementation
+- [x] Fixes & New Features
+    - [x] Fix Bonus Accrual Logic
+    - [x] Fix Map Rendering
+    - [x] Implement Bonus Shop
+- [x] UI Optimization & Content
+    - [x] Remove price from Pump cards
+    - [x] Create Promotions Page
+    - [x] Update Navbar Links
+- [x] Profile & Branding
+    - [x] Fetch User Transactions in View
+    - [x] Display History in Profile Template
+    - [x] Add Favicon
+- [x] PDF Receipts
+    - [x] Install reportlab
+    - [x] Create download_receipt view (Safe Mode)
+    - [x] Update Profile Template
+- [x] Verification

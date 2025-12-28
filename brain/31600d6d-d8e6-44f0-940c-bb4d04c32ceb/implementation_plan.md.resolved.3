@@ -1,0 +1,49 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Develop a web-based Gas Station Management System using Django. The system will handle fuel inventory, pump management, and sales transactions. It will support three user roles: Admin, Operator, and Client.
+
+## User Review Required
+- **Styling**: Bootstrap 5 with custom CSS variables for Light/Dark mode switching.
+- **Loyalty**: Free Coffee Coupon for transactions > 20 Liters.
+
+## Proposed Changes
+
+### Project Structure
+- Project Name: `gas_station`
+- App Name: `core`
+
+### Models ([core/models.py](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py))
+- **User**: Extend `AbstractUser` or use Groups for roles (Admin, Operator, Client).
+- **Fuel**:
+    - `name` (e.g., A-95, Diesel)
+    - `price_per_liter`
+    - `stock_quantity`
+    - `color_code` (Hex color for UI accents)
+- **Pump**:
+    - `name/number`
+    - `fuel_type` (ForeignKey to Fuel)
+    - `status` (Available, Busy, Out of Order)
+- **Transaction**:
+    - `date_time`
+    - [pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56) (ForeignKey)
+    - [fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56) (ForeignKey)
+    - `liters`
+    - `total_price`
+    - `operator` (ForeignKey to User)
+    - `client` (ForeignKey to User, optional)
+
+### Views & Templates
+- **Features**:
+    - **Theme Switcher**: JS-based toggle saved to local storage.
+    - **Dashboard**: Dynamic cards with fuel details.
+    - **Fueling Logic**: Modal-based interaction.
+    - **Loyalty Reward**: Automatic coupon generation for >20L.
+- **Localization**: Full Ukrainian translation.
+
+## Verification Plan
+### Manual Verification
+- Test Theme Switcher (Light/Dark).
+- Verify "Soft Shadows" in Light mode.
+- Perform end-to-end fueling transaction.
+- **Verify Coupon**: Fuel 21L and check if "Free Coffee" alert appears.

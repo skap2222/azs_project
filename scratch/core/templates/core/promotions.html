@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="row mb-5 text-center">
+    <div class="col-12">
+        <h1 class="display-4 fw-bold text-white mb-3">
+            <i class="fas fa-fire text-danger me-2"></i> Гарячі Акції
+        </h1>
+        <p class="lead text-muted">Отримуйте більше від кожної заправки</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-lg text-white"
+            style="background: linear-gradient(135deg, #2c3e50, #4ca1af); overflow: hidden;">
+            <div class="card-body p-5">
+                <div class="mb-4">
+                    <i class="fas fa-moon fa-4x text-info"></i>
+                </div>
+                <h3 class="fw-bold mb-3">Нічний Драйв</h3>
+                <p class="fs-5 opacity-75">З 23:00 до 05:00 нараховуємо удвічі більше бонусів за кожен літр пального.
+                </p>
+                <div class="mt-4">
+                    <span class="badge bg-white text-dark fs-6 px-3 py-2">x2 Бонуси</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-lg text-white"
+            style="background: linear-gradient(135deg, #4568dc, #b06ab3); overflow: hidden;">
+            <div class="card-body p-5">
+                <div class="mb-4">
+                    <i class="fas fa-gas-pump fa-4x text-warning"></i>
+                </div>
+                <h3 class="fw-bold mb-3">Повний Бак</h3>
+                <p class="fs-5 opacity-75">Заправляйте від 40 літрів будь-якого пального та отримуйте купон на
+                    безкоштовну каву.</p>
+                <div class="mt-4">
+                    <span class="badge bg-warning text-dark fs-6 px-3 py-2"><i class="fas fa-coffee me-1"></i> Кава в
+                        подарунок</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-lg text-white"
+            style="background: linear-gradient(135deg, #ff512f, #dd2476); overflow: hidden;">
+            <div class="card-body p-5">
+                <div class="mb-4">
+                    <i class="fas fa-gift fa-4x text-light"></i>
+                </div>
+                <h3 class="fw-bold mb-3">Вікенд з Бонусами</h3>
+                <p class="fs-5 opacity-75">Кожної суботи та неділі знижка -20% на всі товари в нашому Магазині Бонусів.
+                </p>
+                <div class="mt-4">
+                    <span class="badge bg-white text-danger fs-6 px-3 py-2">-20% Shop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

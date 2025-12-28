@@ -1,0 +1,43 @@
+# Implementation Plan - Remove Comments
+
+The goal is to remove all comments from the codebase as requested by the user.
+
+## Proposed Changes
+
+### Python Files
+Remove all lines starting with `#` and inline comments.
+Files to process:
+- `seed.py`
+- `manage.py`
+- `gas_station/wsgi.py`
+- `gas_station/urls.py`
+- `gas_station/settings.py`
+- `gas_station/asgi.py`
+- `core/models.py`
+- `core/views.py`
+- `core/urls.py`
+- `core/tests.py`
+- `core/admin.py`
+- `core/apps.py`
+
+### HTML Files
+Remove all `<!-- ... -->` blocks.
+Files to process:
+- `core/templates/core/shop.html`
+- `core/templates/core/register.html`
+- `core/templates/core/promotions.html`
+- `core/templates/core/profile.html`
+- `core/templates/core/map.html`
+- `core/templates/core/login.html`
+- `core/templates/core/index.html`
+- `core/templates/core/base.html`
+
+### CSS Files
+Remove `/* ... */` blocks.
+Files to process:
+- `static/css/style.css`
+- `static/css/logo_adaptation.css`
+
+## Verification Plan
+- Manual check of modified files to ensure code integrity is preserved.
+- Run `python manage.py check` to verify no syntax errors were introduced.

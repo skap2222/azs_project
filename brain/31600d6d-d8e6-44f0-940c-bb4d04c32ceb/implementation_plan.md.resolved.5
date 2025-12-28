@@ -1,0 +1,28 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Fix reported bugs (Bonus Accrual, Empty Map) and implement a new "Bonus Shop" feature.
+
+## User Review Required
+- **Shop Prices**: Hot Dog (50), Coffee (30).
+- **Map**: Simple full-screen dark map of Ukraine.
+
+## Proposed Changes
+
+### Logic Fixes
+- **Bonus Accrual**: Verify `request.user.profile.save()` is called in [fuel_pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#37-92).
+- **Map**: Ensure Leaflet container has height and scripts are loaded correctly.
+
+### New Feature: Bonus Shop
+- **View**: `shop_view` to render items and handle purchases (POST request).
+- **Template**: `shop.html` with dark cards for items.
+- **Logic**: Check `profile.bonus_balance >= price`, deduct, save.
+
+### Models
+- No changes expected, unless we want to make Shop Items dynamic (will use hardcoded for now as per request).
+
+## Verification Plan
+### Manual Verification
+1. **Bonuses**: Fuel 10L -> Check Profile (+10).
+2. **Shop**: Buy Coffee (30) -> Check Profile (-30). Try buying with insufficient funds.
+3. **Map**: Open /map/ and verify it renders Ukraine.

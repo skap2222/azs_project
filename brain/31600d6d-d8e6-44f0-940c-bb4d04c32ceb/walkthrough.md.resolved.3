@@ -1,0 +1,42 @@
+# Gas Station System Walkthrough
+
+## Overview
+The Gas Station Management System has been fully implemented with a modern interface featuring both Light and Dark themes, Ukrainian localization, and dynamic fuel type customization.
+
+## Features Implemented
+
+### 1. User Interface (UI/UX)
+- **Theme Switcher**: Users can toggle between **Light (Soft)** and **Dark (Neon)** modes via the navbar icon.
+- **Dynamic Colors**: Fuel types retain branding colors across themes.
+- **Interactive Map**: A new `/map/` page showing station locations with real-time prices.
+
+### 2. Backward Logic & Accounts
+- **Authentication**: Registration and Login pages.
+- **Profiles**: Personal cabinet showing Bonus Balance.
+- **Loyalty System**:
+    - **Bonuses**: 1 Liter = 1 Bonus Point (credited automatically).
+    - **Coupons**: Transactions >20L trigger a "Free Coffee" reward.
+
+### 3. Backend Logic
+- **Models**:
+    - [Fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#4-16): Includes `color_code`.
+    - [Pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#17-33) & [Transaction](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#34-49): Business logic.
+    - [Profile](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py#50-60): Stores user bonus balance.
+- **Map**: Uses Leaflet.js with Dark Matter tiles.
+
+## How to Run
+1.  **Ensure Virtual Environment is Active**:
+    ```bash
+    .\venv\Scripts\activate
+    ```
+2.  **Run Server**:
+    ```bash
+    python manage.py runserver
+    ```
+3.  **Access Site**: Open `http://127.0.0.1:8000`
+
+## Verification Steps
+1.  **Register**: Create a new account via the "Реєстрація" button.
+2.  **Fueling**: Buy 10 Liters of fuel.
+3.  **Check Bonuses**: Go to "Мій профіль" and verify you have +10 bonuses.
+4.  **Map**: Click "Карта АЗК" and verify markers show correct prices.

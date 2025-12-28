@@ -1,0 +1,23 @@
+# Gas Station Management System - Task List
+
+- [ ] Project Initialization
+    - [ ] Create project directory
+    - [ ] Initialize Django project `gas_station`
+    - [ ] Create Django app `core`
+- [ ] Database Modeling
+    - [ ] Define `User` roles logic
+    - [ ] Define `Fuel` model
+    - [ ] Define `Pump` model
+    - [ ] Define `Transaction` model
+    - [ ] Run migrations
+- [ ] Core Features Implementation
+    - [ ] Configure Admin Panel
+    - [ ] Implement Authentication (Login/Register)
+    - [ ] Create Operator Dashboard (Fueling)
+    - [ ] Create Client Dashboard (History)
+- [ ] UI/UX Implementation
+    - [ ] Setup Bootstrap templates
+    - [ ] Create views for all models
+- [ ] Verification
+    - [ ] Test User Roles
+    - [ ] Test Transaction Flow

@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .navbar {
+        margin-bottom: 0 !important;
+    }
+
+    #map {
+        height: calc(100vh - 70px);
+        width: 100%;
+        margin-top: -1.5rem;
+    }
+</style>
+
+<div id="map"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var map = L.map('map', {
+            center: [48.3794, 31.1656],
+            zoom: 6,
+            zoomControl: true,
+            scrollWheelZoom: true
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+    });
+</script>
+{% endblock %}

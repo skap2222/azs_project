@@ -1,0 +1,43 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Develop a web-based Gas Station Management System using Django. The system will handle fuel inventory, pump management, and sales transactions. It will support three user roles: Admin, Operator, and Client.
+
+## User Review Required
+- **Loyalty**: 1 Liter = 1 Bonus Point.
+- **Map**: Using Leaflet with Dark Theme tiles.
+
+## Proposed Changes
+
+### Project Structure
+- Project Name: `gas_station`
+- App Name: `core`
+
+### Models ([core/models.py](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py))
+- **User**: Extend `AbstractUser` or use Groups for roles.
+- **Profile** [NEW]:
+    - `user` (OneToOne)
+    - `bonus_balance` (Decimal/Int)
+- **Fuel**: `name`, `price`, `stock`, `color_code`.
+- **Pump**: `name`, [fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56), `status`.
+- **Transaction**: `user`, [pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56), [fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56), `liters`, `amount`, `is_paid`.
+
+### Views & Templates
+- **Auth** [NEW]:
+    - `register`: User registration.
+    - `login`: Custom styled login.
+    - `profile`: Display bonuses and history.
+- **Map** [NEW]: `/map/` page with Leaflet.js interactive map.
+- **Loyalty Logic**:
+    - Update [fuel_pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-56) to credit bonuses to `request.user`.
+
+### Logic
+- **Signals**: Auto-create Profile on User creation.
+
+## Verification Plan
+### Manual Verification
+- Register a new user.
+- Log in.
+- Buy 10L of fuel.
+- Check Profile -> Bonus Balance should be +10.
+- Open Map page and check markers.

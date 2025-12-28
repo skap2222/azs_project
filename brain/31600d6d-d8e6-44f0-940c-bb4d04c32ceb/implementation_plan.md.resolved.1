@@ -1,0 +1,52 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Develop a web-based Gas Station Management System using Django. The system will handle fuel inventory, pump management, and sales transactions. It will support three user roles: Admin, Operator, and Client.
+
+## User Review Required
+- **Database**: Using SQLite for simplicity as per requirements, but code will be compatible with PostgreSQL.
+- **Styling**: Using Bootstrap 5 for rapid UI development.
+
+## Proposed Changes
+
+### Project Structure
+- Project Name: `gas_station`
+- App Name: `core`
+
+### Models ([core/models.py](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/models.py))
+- **User**: Extend `AbstractUser` or use Groups for roles (Admin, Operator, Client).
+    - Roles:
+        - Admin: Full access (Django Admin).
+        - Operator: Can manage pumps and create transactions.
+        - Client: Can view personal transaction history.
+- **Fuel**:
+    - `name` (e.g., A-95, Diesel)
+    - `price_per_liter`
+    - `stock_quantity`
+    - `color_code` (Hex color for UI accents) [NEW]
+- **Pump**:
+    - `name/number`
+    - `fuel_type` (ForeignKey to Fuel)
+    - `status` (Available, Busy, Out of Order)
+- **Transaction**:
+    - `date_time`
+    - [pump](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-51) (ForeignKey)
+    - [fuel](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#11-51) (ForeignKey)
+    - `liters`
+    - `total_price`
+    - `operator` (ForeignKey to User)
+    - `client` (ForeignKey to User, optional)
+
+### Views & Templates
+- **Auth**: Login, Register (for clients).
+- **Dashboard**: Redirects based on role.
+- **Operator View**: Select pump, select fuel amount, confirm transaction.
+- **Client View**: List of past transactions.
+
+## Verification Plan
+### Manual Verification
+- Create users for each role.
+- Log in as Operator and perform a transaction.
+- Check if fuel stock decreases.
+- Log in as Client and verify the transaction appears in history.
+- Check Admin panel for full records.

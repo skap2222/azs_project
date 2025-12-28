@@ -1,0 +1,22 @@
+# Gas Station Management System - Implementation Plan
+
+## Goal Description
+Fix the empty transaction history in the user profile and add a favicon to the browser tab.
+
+## User Review Required
+- **History Display**: Will show Date, Fuel (colored), Liters, Amount, Bonuses.
+- **Favicon**: Will use the existing logo image.
+
+## Proposed Changes
+
+### Logic Fixes
+- **[views.py](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py)**: Update [profile_view](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/views.py#21-24) to fetch `Transaction.objects.filter(user=request.user)`.
+
+### UI Changes
+- **[profile.html](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/templates/core/profile.html)**: Replace placeholder text with a zebra-striped table of transactions. Use fuel color codes for badges.
+- **[base.html](file:///C:/Users/kirpo/.gemini/antigravity/scratch/core/templates/core/base.html)**: Add `<link rel="icon">` pointing to the logo.
+
+## Verification Plan
+### Manual Verification
+1. **Profile**: Go to `/profile/`. Verify transactions list matches recent activity.
+2. **Favicon**: Check browser tab for the logo icon.

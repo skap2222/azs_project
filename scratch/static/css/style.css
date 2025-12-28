@@ -1,0 +1,100 @@
+:root {
+    --bg-body: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #343a40;
+    --text-muted: #6c757d;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --navbar-bg: rgba(255, 255, 255, 0.85);
+    --modal-bg: #ffffff;
+    --input-bg: #f8f9fa;
+    --input-text: #212529;
+}
+
+[data-bs-theme="light"] img[alt="Logo"] {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+[data-bs-theme="dark"] {
+    --bg-body: #121212;
+    --bg-card: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-muted: #adb5bd;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.5);
+    --navbar-bg: rgba(18, 18, 18, 0.8);
+    --modal-bg: #1e1e1e;
+    --input-bg: #2b2b2b;
+    --input-text: #ffffff;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--navbar-bg) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] .card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title {
+    color: var(--text-primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.modal-content {
+    background-color: var(--modal-bg);
+    color: var(--text-primary);
+}
+
+.form-control {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.input-group-text {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
